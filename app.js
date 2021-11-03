@@ -8,15 +8,15 @@ function lukeName() {
   console.log(name1);
 }
 
-function luke(name1, callback) {
+function luke(n, callback) {
   setTimeout(() => {
-   callback (name1);
+    name1 = n;
+    callback();
   }, 1000);
 }
-luke(`Mark Hamill`, n => {console.log(n); });
-lukeName();
+luke(`Mark Hamill`, lukeName);
 
-console.log("==========");
+
 // 2. Create a promise in the han function (Put the setTimeout inside the function with the resolve and reject parameters that is passed into the Promise). Also, consume the promise that is now returned from the han function in a way that the value of `Harrison Ford` will display in the terminal/console for the name2 variable when the hanName function is run.
 
 let name2 = "Han Solo";
@@ -26,17 +26,17 @@ function hanName() {
   console.log(name2);
 }
 
-function han(name2) {
+function han(n2) {
   return new Promise ((resolve, reject) => {
   setTimeout(() => {
-    resolve (name2);
+    name2 = n2;
+    resolve ();
   }, 2000);
 });
 }
-han(`Harrison Ford`).then (n => console.log(n));
-hanName();
+han(`Harrison Ford`).then (hanName);
+;
 
-console.log("==========");
 
 // 3. Use a promise in the leia function (Put the setTimeout inside the function with the resolve and reject parameters that is passed into the Promise). Also, use Async/Await so the value of `Carrie Fisher` will display in the terminal/console for the name3 variable when the leiaName function is run.
 
@@ -47,21 +47,20 @@ function leiaName() {
   console.log(name3);
 }
 
-function leia(name3){
+function leia(n3){
   return new Promise ((resolve, reject) => {
   setTimeout(() => {
-    resolve (name3);
+    name3 = n3;
+    resolve();
   }, 3000);
 });
 }
 
-async function lady(){
-console.log(await leia('Carrie Fisher'));
+async function princess(){
+  await leia(`Carrie Fisher`);
+  leiaName();
 }
-leiaName();
-lady();
-
-console.log("==========");
+princess();
 
 //BONUS...
 // 4. Use Promise.all to display the values set for p1, p2, and p3 in a single array in the console/terminal.
@@ -80,6 +79,6 @@ const p3 = new Promise((resolve, reject) => {
     resolve('Third Promise')
   }, 4000);
 });
-Promise.all([p1, p2, p3]).then((arr) =>{
-  console.log(arr);
+Promise.all([p1, p2, p3]).then((array) =>{
+  console.log(array);
 })
