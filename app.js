@@ -79,6 +79,6 @@ const p3 = new Promise((resolve, reject) => {
     resolve('Third Promise')
   }, 4000);
 });
-Promise.all([p1, p2, p3]).then((array) =>{
-  console.log(array);
+Promise.all([p1, p2, p3]).then((values) =>{
+  console.log(values);
 })
