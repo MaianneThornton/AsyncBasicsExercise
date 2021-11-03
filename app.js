@@ -8,14 +8,15 @@ function lukeName() {
   console.log(name1);
 }
 
-function luke(n) {
+function luke(name1, callback) {
   setTimeout(() => {
-    name1 = n;
+   callback (name1);
   }, 1000);
 }
-luke(`Mark Hamill`);
+luke(`Mark Hamill`, n => {console.log(n); });
 lukeName();
 
+console.log("==========");
 // 2. Create a promise in the han function (Put the setTimeout inside the function with the resolve and reject parameters that is passed into the Promise). Also, consume the promise that is now returned from the han function in a way that the value of `Harrison Ford` will display in the terminal/console for the name2 variable when the hanName function is run.
 
 let name2 = "Han Solo";
@@ -25,13 +26,17 @@ function hanName() {
   console.log(name2);
 }
 
-function han(n) {
+function han(name2) {
+  return new Promise ((resolve, reject) => {
   setTimeout(() => {
-    name2 = n;
+    resolve (name2);
   }, 2000);
+});
 }
-han(`Harrison Ford`);
+han(`Harrison Ford`).then (n => console.log(n));
 hanName();
+
+console.log("==========");
 
 // 3. Use a promise in the leia function (Put the setTimeout inside the function with the resolve and reject parameters that is passed into the Promise). Also, use Async/Await so the value of `Carrie Fisher` will display in the terminal/console for the name3 variable when the leiaName function is run.
 
@@ -42,13 +47,21 @@ function leiaName() {
   console.log(name3);
 }
 
-function leia(n){
+function leia(name3){
+  return new Promise ((resolve, reject) => {
   setTimeout(() => {
-    name3 = n;
+    resolve (name3);
   }, 3000);
+});
 }
-leia('Carrie Fisher');
+
+async function lady(){
+console.log(await leia('Carrie Fisher'));
+}
 leiaName();
+lady();
+
+console.log("==========");
 
 //BONUS...
 // 4. Use Promise.all to display the values set for p1, p2, and p3 in a single array in the console/terminal.
