@@ -79,6 +79,7 @@ const p3 = new Promise((resolve, reject) => {
     resolve('Third Promise')
   }, 4000);
 });
+// Waits until the longest (Time Wise) Promise is complete before it runs the ".then" (AKA Callback function)
 Promise.all([p1, p2, p3]).then((values) =>{
   console.log(values);
 })
