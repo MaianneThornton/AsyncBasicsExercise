@@ -80,3 +80,6 @@ const p3 = new Promise((resolve, reject) => {
     resolve('Third Promise')
   }, 4000);
 });
+Promise.all([p1, p2, p3]).then((arr) =>{
+  console.log(arr);
+})
